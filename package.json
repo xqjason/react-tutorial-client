@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build_1": "browserify -t [ babelify --presets [ react ] ] src/tutorial1.js -o build/tutorial1.js"
+    "build_1": "browserify -t [ babelify --presets [ react ] ] src/tutorial1.js -o build/tutorial1.js",
+    "build_2": "browserify -t [ babelify --presets [ react ] ] src/tutorial2.js -o build/tutorial2.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
     "babel-preset-react": "^6.11.1",
     "babelify": "^7.3.0",
     "react": "^15.2.1",
-    "react-dom": "^15.2.1"
+    "react-dom": "^15.2.1",
+    "react-select": "^1.0.0-beta13"
   }
 }
