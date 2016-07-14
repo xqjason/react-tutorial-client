@@ -4,7 +4,7 @@ var React = require('react');
 var SmartInput = require('../lib/fields/SmartInput.js'); 
 
 
-var CommentBox = React.createClass({
+var FormBox = React.createClass({
   loadFieldsFromServer: function() {
     $.ajax({
       url: this.props.url,
@@ -27,41 +27,39 @@ var CommentBox = React.createClass({
   },
   render: function() {
     return (
-      <div className="commentBox">
-        <h1>Comments</h1>
-        <CommentList data={this.state.data} />
+      <div className="FormBox">
+        <FieldList data={this.state.data} />
       </div>
     );
   }
 });
 
 
-var CommentList = React.createClass({
+var FieldList = React.createClass({
 	render: function () {
-		var commentItems = this.props.data.map(function (fields) {
+		var fieldItems = this.props.data.map(function (fields) {
 			return (
-				<Comment fieldItem = {fields} /> 
+				<FieldItem key ={fields._id} fieldItem = {fields} /> 
 			);
 		});
 
 		return (
-			<div className="commentList">
-				{commentItems}
+			<div className="FieldList">
+				{fieldItems}
 			</div>
 		);
 	}
 });
 
-var Comment = React.createClass({
+var FieldItem = React.createClass({
   render: function() {
-    var fieldSchema = this.props.fieldItem;
-    if(fieldSchema.type==='string'){
-      return <SmartInput />
+    if(this.props.fieldItem.type==='string'){
+      return <SmartInput label={this.props.fieldItem.label} type={this.props.fieldItem.type}/>
     }else{
       return (
-      <div className="comment">
-        <h2 className="commentAuthor">
-          Test
+      <div className="xxxxxx">
+        <h2 className="xxxxxxyyyyy">
+          {this.props.fieldItem.label}
         </h2>
       </div>
       );
@@ -71,6 +69,6 @@ var Comment = React.createClass({
 
 
 ReactDOM.render(
-  <CommentBox url="https://jsx-dev-react.herokuapp.com/form/FormFieldsNoAuth" pollInterval={2000} />,
+  <FormBox url="https://jsx-dev-react.herokuapp.com/form/FormFields" pollInterval={2000} />,
   document.getElementById('content')
 );

@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build_1": "browserify -t [ babelify --presets [ react ] ] src/tutorial1.js -o build/tutorial1.js",
-    "build_2": "browserify -t [ babelify --presets [ react ] ] src/tutorial2.js -o build/tutorial2.js"
+    "build_2": "browserify -t [ babelify --presets [ react ] ] src/tutorial2.js -o build/tutorial2.js",
+    "build_login": "browserify -t [ babelify --presets [ react ] ] src/login.js -o build/login.js"
   },
   "repository": {
     "type": "git",
