@@ -35,14 +35,6 @@ var CommentBox = React.createClass({
   }
 });
 
-/*
-var SmartFormPage = React.createClass({
-  render: function(){
-    return <SmartForm data = {this.props.data} />
-  }
-});
-*/
-
 
 var CommentList = React.createClass({
 	render: function () {
@@ -64,7 +56,7 @@ var Comment = React.createClass({
   render: function() {
     var fieldSchema = this.props.fieldItem;
     if(fieldSchema.type==='string'){
-      return <SmartInput  data = {this.fieldSchema} />
+      return <SmartInput />
     }else{
       return (
       <div className="comment">
