@@ -1,5 +1,6 @@
 var ReactDOM = require('react-dom');
 var React = require('react');
+var browserHistory = require('react-router');
 
 
 var LoginBox = React.createClass({
@@ -48,6 +49,12 @@ var LoginForm = React.createClass({
     this.setState({text:""});
     this.refs.email.value = '';
     this.refs.password.value = '';
+
+    const userName = e.target.elements[0].value;
+    const repo = e.target.elements[1].value;
+    const path = `/repos/${userName}/${repo}`;
+    browserHistory.push(path);
+
   },
   handleLogin: function (e) {
     e.preventDefault();

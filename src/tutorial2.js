@@ -69,6 +69,6 @@ var FieldItem = React.createClass({
 
 
 ReactDOM.render(
-  <FormBox url="https://jsx-dev-react.herokuapp.com/form/FormFields" pollInterval={2000} />,
-  document.getElementById('content')
+  <FormBox url="https://jsx-dev-react.herokuapp.com/form/FormFieldsNoAuth" pollInterval={2000} />,
+  document.getElementById('app')
 );
