@@ -7,9 +7,12 @@ var SmartInput = require('../lib/fields/SmartInput.js');
 var FormBox = React.createClass({
   loadFieldsFromServer: function() {
     $.ajax({
-      url: this.props.url,
+      url: "https://jsx-dev-react.herokuapp.com/form/FormFields",
       dataType: 'json',
       cache: false,
+      beforeSend: function (xhr) {
+        xhr.setRequestHeader ("Authorization", "Basic " + btoa("jd@test.com" + ":" + "abc123"));
+      },
       success: function(data) {
         this.setState({data: data});
       }.bind(this),
@@ -23,7 +26,6 @@ var FormBox = React.createClass({
   },
   componentDidMount: function() {
     this.loadFieldsFromServer();
-    setInterval(this.loadFieldsFromServer, this.props.pollInterval);
   },
   render: function() {
     return (
@@ -67,8 +69,4 @@ var FieldItem = React.createClass({
   }
 });
 
-
-ReactDOM.render(
-  <FormBox url="https://jsx-dev-react.herokuapp.com/form/FormFieldsNoAuth" pollInterval={2000} />,
-  document.getElementById('app')
-);
+module.exports = FormBox;

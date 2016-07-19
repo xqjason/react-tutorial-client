@@ -1,7 +1,5 @@
 var ReactDOM = require('react-dom');
 var React = require('react');
-var browserHistory = require('react-router');
-
 
 var LoginBox = React.createClass({
   
@@ -10,7 +8,7 @@ var LoginBox = React.createClass({
   },
   handleLoginSubmit: function (data) {
     $.ajax({
-      url: this.props.url,
+      url: "https://jsx-dev-react.herokuapp.com/session/login",
       dataType: 'json',
       type: 'POST',
       data: data,
@@ -34,6 +32,9 @@ var LoginBox = React.createClass({
 });
 
 var LoginForm = React.createClass({
+  contextTypes: {
+    router: React.PropTypes.object
+  },  
   getInitialState: function () {
     return {data:0,tittle: 'Login Test',text:''};
   },
@@ -50,11 +51,8 @@ var LoginForm = React.createClass({
     this.refs.email.value = '';
     this.refs.password.value = '';
 
-    const userName = e.target.elements[0].value;
-    const repo = e.target.elements[1].value;
-    const path = `/repos/${userName}/${repo}`;
-    browserHistory.push(path);
-
+    const path = '/form';
+    this.context.router.push(path);
   },
   handleLogin: function (e) {
     e.preventDefault();
@@ -74,7 +72,10 @@ var LoginForm = React.createClass({
   }
 });
 
+module.exports = LoginBox;
+
+/*
 ReactDOM.render(
-  <LoginBox url="https://jsx-dev-react.herokuapp.com/session/login" />,
+  <LoginBox url="https://octo-dev.herokuapp.com/session/login" />,
   document.getElementById('app')
-);
+);*/
